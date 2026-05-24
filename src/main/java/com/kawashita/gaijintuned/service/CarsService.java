@@ -23,7 +23,7 @@ public class CarsService {
   }
 
   //show
-  public Cars findbyID(Long id){
+  public Cars findById(Long id){
     return carsRepository.findById(id)
     .orElseThrow(() -> new RuntimeException("Car not found"));
   }
@@ -37,7 +37,7 @@ public class CarsService {
   //edit
   @Transactional
   public Cars update(Long id, Cars car){
-    Cars existing = findbyID(id);
+    Cars existing = findById(id);
     existing.setCarName(car.getCarName());
     existing.setCarSpecs(car.getCarSpecs());
     return carsRepository.save(existing);
