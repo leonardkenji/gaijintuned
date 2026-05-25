@@ -2,8 +2,8 @@ package com.kawashita.gaijintuned.controller;
 import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kawashita.gaijintuned.infrastructure.entity.Cars;
-import com.kawashita.gaijintuned.service.CarsService;
+import com.kawashita.gaijintuned.infrastructure.entity.Car;
+import com.kawashita.gaijintuned.service.CarService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,30 +19,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/cars")
 @RequiredArgsConstructor
-public class CarsController {
-  private final CarsService carsService;
+public class CarController {
+  private final CarService carsService;
 
   //index - Get the cars from DB
   @GetMapping
-  public ResponseEntity<List<Cars>> findAll(){
+  public ResponseEntity<List<Car>> findAll(){
     return ResponseEntity.ok(carsService.findAll());
   }
 
   //show - Get one car from DB
   @GetMapping("/{id}")
-  public ResponseEntity<Cars> findById(@PathVariable Long id){
+  public ResponseEntity<Car> findById(@PathVariable Long id){
     return ResponseEntity.ok(carsService.findById(id));
   }
 
   //Save information in the DB
   @PostMapping
-  public ResponseEntity<Cars> save(@RequestBody Cars car){
+  public ResponseEntity<Car> save(@RequestBody Car car){
     return ResponseEntity.ok(carsService.save(car));
   }
 
   //Edit information in the DB
   @PutMapping("/{id}")
-  public ResponseEntity<Cars> update(@PathVariable Long id, @RequestBody Cars car){
+  public ResponseEntity<Car> update(@PathVariable Long id, @RequestBody Car car){
     return ResponseEntity.ok(carsService.update(id, car));
   }
 

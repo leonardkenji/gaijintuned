@@ -15,15 +15,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-@Table(name = "cars")
-public class Cars {
+@Builder
+@Table(name="users")
+public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id ;
+  private Long id;
 
-  private String carName;
-  private String carSpecs;
+  private String firstName;
+  private String lastName;
+  private String email;
+  private String phoneNumber;
 
 }

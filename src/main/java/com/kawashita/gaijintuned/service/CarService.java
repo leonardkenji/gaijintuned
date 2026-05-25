@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.kawashita.gaijintuned.infrastructure.entity.Cars;
-import com.kawashita.gaijintuned.infrastructure.repository.CarsRepository;
+import com.kawashita.gaijintuned.infrastructure.entity.Car;
+import com.kawashita.gaijintuned.infrastructure.repository.CarRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -13,31 +13,31 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 
-public class CarsService {
+public class CarService {
 
-  private final CarsRepository carsRepository;
+  private final CarRepository carsRepository;
 
   //index
-  public List<Cars> findAll(){
+  public List<Car> findAll(){
     return carsRepository.findAll();
   }
 
   //show
-  public Cars findById(Long id){
+  public Car findById(Long id){
     return carsRepository.findById(id)
     .orElseThrow(() -> new RuntimeException("Car not found"));
   }
   //create
   @Transactional
-  public Cars save(Cars car){
+  public Car save(Car car){
     return carsRepository.save(car);
   }
 
 
   //edit
   @Transactional
-  public Cars update(Long id, Cars car){
-    Cars existing = findById(id);
+  public Car update(Long id, Car car){
+    Car existing = findById(id);
     existing.setCarName(car.getCarName());
     existing.setCarSpecs(car.getCarSpecs());
     return carsRepository.save(existing);
