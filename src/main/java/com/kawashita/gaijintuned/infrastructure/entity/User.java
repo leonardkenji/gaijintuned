@@ -1,9 +1,12 @@
 package com.kawashita.gaijintuned.infrastructure.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,5 +30,8 @@ public class User {
   private String lastName;
   private String email;
   private String phoneNumber;
+
+  @OneToMany(mappedBy = "user")
+  private List<Booking> bookings;
 
 }

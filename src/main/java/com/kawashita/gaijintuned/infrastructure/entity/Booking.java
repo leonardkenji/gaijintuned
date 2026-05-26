@@ -1,12 +1,11 @@
 package com.kawashita.gaijintuned.infrastructure.entity;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,15 +19,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "cars")
-public class Car {
+@Table(name="bookings")
+public class Booking {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+
   private Long id;
 
-  private String carName;
-  private String carSpecs;
+  @ManyToOne
+  @JoinColumn(name="user_id")
+  private User user;
 
-  @OneToMany(mappedBy = "car")
-  private List<Booking> bookings;
+  @ManyToOne
+  @JoinColumn(name="car_id")
+  private Car car;
+
 }
