@@ -2,6 +2,8 @@ package com.kawashita.gaijintuned.infrastructure.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,7 +30,7 @@ public class Car {
 
   private String carName;
   private String carSpecs;
-
+  @JsonIgnore
   @OneToMany(mappedBy = "car")
   private List<Booking> bookings;
 }

@@ -14,7 +14,7 @@ import com.kawashita.gaijintuned.service.BookingService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/user/{userId}/bookings")
+@RequestMapping("/users/{userId}/bookings")
 @RequiredArgsConstructor
 public class BookingController {
 

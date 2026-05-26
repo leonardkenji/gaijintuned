@@ -2,6 +2,8 @@ package com.kawashita.gaijintuned.infrastructure.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +32,7 @@ public class User {
   private String lastName;
   private String email;
   private String phoneNumber;
-
+  @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<Booking> bookings;
 
