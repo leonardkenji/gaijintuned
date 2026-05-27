@@ -27,7 +27,7 @@ public class ExperienceController {
   private final ExperienceRepository experienceRepository;
   private final ExperienceService experienceService;
 
-  //getAll
+  //getAll working
   @GetMapping
   public ResponseEntity<List<Experience>> findAll(){
     return ResponseEntity.ok(experienceService.findAll());
